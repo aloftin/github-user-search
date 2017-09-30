@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+}
+
+.user-search {
+  height: 30px;
+  width: 33%;
+  min-width: 15rem;
+  border: solid 1px #d2d7d8;
+  color: #666666;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.user-search::-webkit-input-placeholder {
+  color: #d2d7d8;
+}
