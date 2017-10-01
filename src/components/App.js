@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import SearchInput from "./SearchInput";
-import Api from "./api";
-import "./App.css";
+import Followers from "./Followers";
+import Api from "../lib/api";
+import "../styles/App.css";
 
 class App extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class App extends Component {
     Api.getUser(username)
       .then(response => {
         Api.getFollowers(username).then(response => {
+          debugger;
           this.setState({ followers: response.data });
         });
       })
@@ -40,6 +42,7 @@ class App extends Component {
           searchForUser={this.searchForUser}
           resetFollowers={this.resetFollowers}
         />
+        <Followers followers={this.state.followers} />
       </div>
     );
   }
