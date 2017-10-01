@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.user-search {
+input {
   height: 30px;
   width: 33%;
   min-width: 15rem;
@@ -13,6 +13,6 @@
   border-radius: 5px;
 }
 
-.user-search::-webkit-input-placeholder {
+input::-webkit-input-placeholder {
   color: #d2d7d8;
 }
