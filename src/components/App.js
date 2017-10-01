@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import SearchInput from "./SearchInput";
-import Followers from "./Followers";
-import Api from "../lib/api";
-import "../styles/App.css";
+import React, { Component } from 'react';
+import SearchInput from './SearchInput';
+import Followers from './Followers';
+import Api from '../lib/api';
+import '../styles/App.css';
 
 class App extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class App extends Component {
 
     this.state = {
       followers: [],
-      userFound: true
+      userFound: true,
     };
 
     this.searchForUser = this.searchForUser.bind(this);
@@ -38,10 +38,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header" />
-        <SearchInput
-          searchForUser={this.searchForUser}
-          resetFollowers={this.resetFollowers}
-        />
+        <SearchInput searchForUser={this.searchForUser} resetFollowers={this.resetFollowers} />
         <Followers followers={this.state.followers} />
       </div>
     );

@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 class SearchInput extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      searchText: ""
+      searchText: '',
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -18,14 +18,14 @@ class SearchInput extends React.Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
 
     this.props.resetFollowers();
   };
 
   handleKeyPress = e => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       this.props.searchForUser(this.state.searchText);
     }
   };
