@@ -1,11 +1,16 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import App from '../components/App';
 
 it('renders without crashing', () => {
-  const component = shallow(<App />);
-  expect(component.exists()).toEqual(true);
+  mount(<App />);
 });
 
-// it changes userfound state to false if bad username is given
-// - mock API call
+describe('render', () => {
+  it('should render the app', () => {
+    const app = shallow(<App />);
+    const heading = <h1>Github User Search</h1>;
+
+    expect(app.contains(heading)).toEqual(true);
+  });
+});

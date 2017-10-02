@@ -37,7 +37,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header" />
+        <h1>Github User Search</h1>
         <SearchInput searchForUser={this.searchForUser} resetFollowers={this.resetFollowers} />
         <Followers followers={this.state.followers} />
       </div>
