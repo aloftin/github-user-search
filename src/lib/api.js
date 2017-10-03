@@ -10,4 +10,8 @@ export default class Api {
   static getFollowers(username) {
     return axios.get(`/users/${username}/followers`);
   }
+
+  static getPageOfFollowers(userId, page) {
+    return axios.get(`/user/${userId}/followers?page=${page}`);
+  }
 }

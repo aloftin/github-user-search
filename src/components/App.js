@@ -12,21 +12,25 @@ class App extends Component {
       followers: [],
       userFound: true,
       hasMoreFollowers: false,
+      currentPageNumber: 0,
     };
 
     this.searchForUser = this.searchForUser.bind(this);
     this.resetFollowers = this.resetFollowers.bind(this);
+    this.getNextPageOfFollowers = this.getNextPageOfFollowers.bind(this);
   }
 
   searchForUser(username) {
     Api.getUser(username)
       .then(response => {
+        this.setState({ userId: response.data.id });
         Api.getFollowers(username).then(response => {
-          debugger;
           this.setState({ followers: response.data });
 
           if (response.headers.link) {
-            this.setState({ hasMoreFollowers: true });
+            const currentPageNumber = this.state.currentPageNumber + 1;
+
+            this.setState({ hasMoreFollowers: true, currentPageNumber });
           }
         });
       })
@@ -39,8 +43,23 @@ class App extends Component {
     this.setState({ followers: [], hasMoreFollowers: false });
   }
 
+  getNextPageOfFollowers() {
+    Api.getPageOfFollowers(this.state.userId, this.state.currentPageNumber + 1).then(response => {
+      const currentPageNumber = this.state.currentPageNumber + 1;
+
+      const followers = this.state.followers;
+      followers.push(...response.data);
+
+      this.setState({ followers, currentPageNumber });
+    });
+  }
+
   renderLoadMoreButton() {
-    return this.state.hasMoreFollowers ? <button>Load more</button> : <div />;
+    return this.state.hasMoreFollowers ? (
+      <button onClick={this.getNextPageOfFollowers}>Load more</button>
+    ) : (
+      <div />
+    );
   }
 
   render() {
