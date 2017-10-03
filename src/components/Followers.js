@@ -1,10 +1,11 @@
 import React from 'react';
+import FollowerPanel from './FollowerPanel';
 
 class Followers extends React.Component {
   renderFollowerPanel(key) {
     const follower = this.props.followers[key];
 
-    return <div key={key}>{follower.login}</div>;
+    return <FollowerPanel key={key} username={follower.login} avatarUrl={follower.avatar_url} />;
   }
 
   render() {
