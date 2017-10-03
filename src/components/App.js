@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       followers: [],
       userFound: true,
+      hasMoreFollowers: false,
     };
 
     this.searchForUser = this.searchForUser.bind(this);
@@ -23,6 +24,10 @@ class App extends Component {
         Api.getFollowers(username).then(response => {
           debugger;
           this.setState({ followers: response.data });
+
+          if (response.headers.link) {
+            this.setState({ hasMoreFollowers: true });
+          }
         });
       })
       .catch(error => {
@@ -31,7 +36,11 @@ class App extends Component {
   }
 
   resetFollowers() {
-    this.setState({ followers: [] });
+    this.setState({ followers: [], hasMoreFollowers: false });
+  }
+
+  renderLoadMoreButton() {
+    return this.state.hasMoreFollowers ? <button>Load more</button> : <div />;
   }
 
   render() {
@@ -40,6 +49,7 @@ class App extends Component {
         <h1>Github User Search</h1>
         <SearchInput searchForUser={this.searchForUser} resetFollowers={this.resetFollowers} />
         <Followers followers={this.state.followers} />
+        {this.renderLoadMoreButton()}
       </div>
     );
   }
