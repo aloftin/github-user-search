@@ -33,9 +33,10 @@ class SearchInput extends React.Component {
   render() {
     return (
       <input
+        autoFocus
         name="searchText"
         type="text"
-        placeholder="Search for a username"
+        placeholder="Search for users..."
         value={this.state.searchText}
         onChange={this.handleInputChange}
         onKeyPress={this.handleKeyPress}
