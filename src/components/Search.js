@@ -42,7 +42,7 @@ class Search extends React.Component {
       [name]: value,
     });
 
-    this.props.resetFollowers();
+    this.props.resetState();
   };
 
   handleKeyPress = e => {

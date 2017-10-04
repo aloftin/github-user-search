@@ -4,20 +4,22 @@ import Followers from './Followers';
 import Api from '../lib/api';
 import '../styles/App.css';
 
+const initialState = {
+  userId: '',
+  followers: [],
+  userFound: true,
+  hasMoreFollowers: false,
+  currentPageNumber: 0,
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      userId: '',
-      followers: [],
-      userFound: true,
-      hasMoreFollowers: false,
-      currentPageNumber: 0,
-    };
+    this.state = initialState;
 
     this.searchForUser = this.searchForUser.bind(this);
-    this.resetFollowers = this.resetFollowers.bind(this);
+    this.resetState = this.resetState.bind(this);
     this.getNextPageOfFollowers = this.getNextPageOfFollowers.bind(this);
   }
 
@@ -40,8 +42,8 @@ class App extends Component {
       });
   }
 
-  resetFollowers() {
-    this.setState({ followers: [], hasMoreFollowers: false });
+  resetState() {
+    this.setState(initialState);
   }
 
   getNextPageOfFollowers() {
@@ -67,7 +69,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Github User Search</h1>
-        <Search searchForUser={this.searchForUser} resetFollowers={this.resetFollowers} />
+        <Search searchForUser={this.searchForUser} resetState={this.resetState} />
         <Followers followers={this.state.followers} />
         {this.renderLoadMoreButton()}
       </div>
