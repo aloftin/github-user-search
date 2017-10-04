@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Followers from '../components/Followers';
+import FollowerPanel from '../components/FollowerPanel';
 
-describe('render', () => {
-  it('should render a list of followers', () => {
-    const followers = ['jseinfeld'];
-    const component = shallow(<Followers followers={followers} />);
-    const listItem = <li>jseinfeld</li>;
+describe('Followers', () => {
+  it('should render a list of FollowerPanels', () => {
+    const followers = [{ login: 'jseinfeld' }, { login: 'gcostanza' }];
+    const wrapper = shallow(<Followers followers={followers} />);
 
-    expect(component.contains(listItem));
+    expect(wrapper.find(FollowerPanel)).toHaveLength(2);
   });
 });
