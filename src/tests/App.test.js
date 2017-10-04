@@ -17,8 +17,7 @@ describe('render', () => {
   it('should render a load more button if there are additional pages of followers', () => {
     const app = shallow(<App />);
     app.setState({ hasMoreFollowers: true });
-    const loadMoreButton = <button>Load more</button>;
 
-    expect(app.contains(loadMoreButton)).toEqual(true);
+    expect(app.find('button')).toHaveLength(1);
   });
 });
