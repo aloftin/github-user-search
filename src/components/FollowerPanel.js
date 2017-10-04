@@ -15,6 +15,8 @@ const Panel = styled.div`
   transform: perspective(1px) translateZ(0);
   transition-duration: 0.3s;
   transition-property: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 
   :hover,
   :focus,
