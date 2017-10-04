@@ -2,22 +2,6 @@
   text-align: center;
 }
 
-input {
-  height: 15px;
-  width: 33%;
-  min-width: 15rem;
-  border: solid 1px #d8e3ea;
-  color: #7a7a86;
-  font-size: 16px;
-  padding: 10px;
-  border-radius: 25px;
-  margin-bottom: 20px;
-}
-
-input::-webkit-input-placeholder {
-  color: #d8e3ea;
-}
-
 button {
   color: #fff;
   background-color: #19bcc9;
