@@ -28,5 +28,16 @@ describe('App', () => {
     expect(search.prop('resetFollowers')).toEqual(resetFollowers);
   });
 
-  it('should clear the followers state when the search input value changes', () => {});
+  it('should clear the followers state when the search input value changes', () => {
+    const wrapper = mount(<App />);
+    wrapper.setState({
+      followers: [
+        { login: 'jseinfeld', avatar: 'http://seinfeld.com/avatar' },
+        { login: 'gcostanza', avatar: 'http://vandelayindustries.com/avatar' },
+      ],
+    });
+
+    wrapper.find(Search).simulate('change');
+    expect(wrapper.state('followers')).toEqual([]);
+  });
 });
