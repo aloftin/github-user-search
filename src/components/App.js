@@ -9,6 +9,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      userId: '',
       followers: [],
       userFound: true,
       hasMoreFollowers: false,
@@ -24,12 +25,12 @@ class App extends Component {
     Api.getUser(username)
       .then(response => {
         this.setState({ userId: response.data.id });
-        Api.getFollowers(username).then(response => {
+
+        Api.getPageOfFollowers(this.state.userId, this.state.currentPageNumber).then(response => {
           this.setState({ followers: response.data });
 
           if (response.headers.link) {
             const currentPageNumber = this.state.currentPageNumber + 1;
-
             this.setState({ hasMoreFollowers: true, currentPageNumber });
           }
         });
@@ -44,7 +45,7 @@ class App extends Component {
   }
 
   getNextPageOfFollowers() {
-    Api.getPageOfFollowers(this.state.userId, this.state.currentPageNumber + 1).then(response => {
+    Api.getPageOfFollowers(this.state.userId, this.state.currentPageNumber).then(response => {
       const currentPageNumber = this.state.currentPageNumber + 1;
 
       const followers = this.state.followers;
