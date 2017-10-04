@@ -12,6 +12,15 @@ const Panel = styled.div`
   text-align: left;
   display: flex;
   align-items: center;
+  transform: perspective(1px) translateZ(0);
+  transition-duration: 0.3s;
+  transition-property: transform;
+
+  :hover,
+  :focus,
+  :active {
+    transform: scale(1.1);
+  }
 
   img {
     height: 32px;
