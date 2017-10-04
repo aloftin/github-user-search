@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import searchIcon from '../images/search.svg';
 
-const Search = styled.input`
+const Input = styled.input`
   height: 15px;
   width: 33%;
   min-width: 15rem;
@@ -21,7 +21,7 @@ const Search = styled.input`
   }
 `;
 
-class SearchInput extends React.Component {
+class Search extends React.Component {
   constructor(props) {
     super(props);
 
@@ -53,7 +53,7 @@ class SearchInput extends React.Component {
 
   render() {
     return (
-      <Search
+      <Input
         autoFocus
         name="searchText"
         type="text"
@@ -66,4 +66,4 @@ class SearchInput extends React.Component {
   }
 }
 
-export default SearchInput;
+export default Search;

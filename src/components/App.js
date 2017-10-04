@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchInput from './SearchInput';
+import Search from './Search';
 import Followers from './Followers';
 import Api from '../lib/api';
 import '../styles/App.css';
@@ -66,7 +66,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Github User Search</h1>
-        <SearchInput searchForUser={this.searchForUser} resetFollowers={this.resetFollowers} />
+        <Search searchForUser={this.searchForUser} resetFollowers={this.resetFollowers} />
         <Followers followers={this.state.followers} />
         {this.renderLoadMoreButton()}
       </div>
