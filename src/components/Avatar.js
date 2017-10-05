@@ -5,7 +5,6 @@ const Image = styled.img`
   height: 32px;
   width: 32px;
   border-radius: 16px;
-  margin: 0px 10px;
 `;
 
 const Avatar = ({ url }) => {

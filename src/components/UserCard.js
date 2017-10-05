@@ -7,17 +7,12 @@ const Profile = styled.div`
   margin: 0px auto 10px auto;
   border-radius: 5px;
   overflow: hidden;
-  padding: 10px;
+  padding: 15px;
   text-align: left;
 
-  .avatar-name {
-    display: flex;
-    align-items: center;
-    transform: perspective(1px) translateZ(0);
-    transition-duration: 0.3s;
-    transition-property: transform;
-    backface-visibility: hidden;
-    transform: translateZ(0);
+  .top {
+    margin-bottom: 5px;
+    text-align: center;
   }
 
   .left-side {
@@ -31,12 +26,12 @@ const Profile = styled.div`
     width: 40%;
     text-align: left;
     float: right;
-    whitespace: nowrap;
+    white-space: nowrap;
   }
 
   .bio {
     color: #7a7a86;
-    font-size: 14px;
+    font-size: 13px;
   }
 
   span {
@@ -44,14 +39,19 @@ const Profile = styled.div`
   }
 
   @media (max-width: 430px) {
+    .top {
+      display: table;
+      margin: auto;
+    }
+
     .left-side {
       display: block;
-      width: 100%;
-      margin-bottom: 10px;
+      text-align: center;
+      margin: 0px auto 10px auto;
     }
+
     .right-side {
       display: block;
-      width: 100%;
       float: none;
       margin: auto;
     }
@@ -61,9 +61,13 @@ const Profile = styled.div`
 const UserCard = props => {
   return (
     <Profile>
-      <div className="avatar-name">
-        <Avatar url={props.avatarUrl} />
-        <a href={props.profileUrl}>{props.username}</a>
+      <div className="top">
+        <div className="avatar-name">
+          <Avatar url={props.avatarUrl} />
+          <div>
+            <a href={props.profileUrl}>{props.username}</a>
+          </div>
+        </div>
       </div>
       <div className="left-side">
         <div>{props.realName}</div>

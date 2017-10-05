@@ -24,6 +24,10 @@ const Panel = styled.div`
   :active {
     transform: scale(1.1);
   }
+
+  span {
+    margin-left: 5px;
+  }
 `;
 
 const FollowerPanel = ({ username, avatarUrl }) => {
