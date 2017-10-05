@@ -6,6 +6,7 @@ const Profile = styled.div`
   background-color: #ffffff;
   margin: 0px auto 10px auto;
   border-radius: 5px;
+  box-shadow: 0px 5px 15px -3px rgba(8, 39, 70, 0.14);
   overflow: hidden;
   padding: 15px;
   text-align: left;
@@ -62,11 +63,9 @@ const UserCard = props => {
   return (
     <Profile>
       <div className="top">
-        <div className="avatar-name">
-          <Avatar url={props.avatarUrl} />
-          <div>
-            <a href={props.profileUrl}>{props.username}</a>
-          </div>
+        <Avatar url={props.avatarUrl} />
+        <div>
+          <a href={props.profileUrl}>{props.username}</a>
         </div>
       </div>
       <div className="left-side">
