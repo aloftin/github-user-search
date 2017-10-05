@@ -9,7 +9,7 @@ const Image = styled.img`
 `;
 
 const Avatar = ({ url }) => {
-  return <Image src={url} alt="avatar" />;
+  return <Image className="avatar" src={url} alt="avatar" />;
 };
 
 export default Avatar;

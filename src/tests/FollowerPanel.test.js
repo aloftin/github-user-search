@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import FollowerPanel from '../components/FollowerPanel';
+import Avatar from '../components/Avatar';
 
 describe('FollowerPanel', () => {
   it("should render the follower's avatar and name", () => {
@@ -10,10 +11,7 @@ describe('FollowerPanel', () => {
     const wrapper = shallow(<FollowerPanel username={username} avatarUrl={url} />);
 
     expect(
-      wrapper.containsAllMatchingElements([
-        <img src={url} alt="avatar" />,
-        <span>{username}</span>,
-      ]),
+      wrapper.containsAllMatchingElements([<Avatar url={url} />, <span>{username}</span>]),
     ).toBe(true);
   });
 });
