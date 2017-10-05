@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Search from './Search';
 import Followers from './Followers';
 import Api from '../lib/api';
+import Button from './Button';
 import '../styles/App.css';
 
 const initialState = {
@@ -59,7 +60,7 @@ class App extends Component {
 
   renderLoadMoreButton() {
     return this.state.hasMoreFollowers ? (
-      <button onClick={this.getNextPageOfFollowers}>Load more</button>
+      <Button content="Load more" onClick={this.getNextPageOfFollowers} />
     ) : (
       <div />
     );
@@ -67,7 +68,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <h1>Github User Search</h1>
         <Search searchForUser={this.searchForUser} resetState={this.resetState} />
         <Followers followers={this.state.followers} />
