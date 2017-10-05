@@ -14,3 +14,12 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+button:focus,
+input:focus,
+button:active,
+input:active {
+  outline: none;
+  box-shadow: 0 0 0 #9e9e9e inset, 0 0 0 2px #95dddf;
+  z-index: 10;
+}
