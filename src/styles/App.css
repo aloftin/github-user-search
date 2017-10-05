@@ -1,21 +1,6 @@
-.App {
+.app {
   text-align: center;
   width: 33%;
   min-width: 15rem;
   margin: auto;
-}
-
-button {
-  color: #fff;
-  background-color: #19bcc9;
-  font-size: 14px;
-  cursor: pointer;
-  padding: 6px 12px;
-  border-radius: 5px;
-  border: 1px solid transparent;
-  margin: 10px 0px;
-}
-
-button:hover {
-  background-color: #1bc9d7;
 }
