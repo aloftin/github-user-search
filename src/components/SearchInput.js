@@ -4,7 +4,7 @@ import searchIcon from '../images/search.svg';
 
 const Input = styled.input`
   height: 15px;
-  width: 70%;
+  width: 60%;
   border: solid 1px #d8e3ea;
   color: #7a7a86;
   font-size: 16px;
