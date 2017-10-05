@@ -1,4 +1,5 @@
 import React from 'react';
+import Avatar from './Avatar';
 import styled from 'styled-components';
 
 const Panel = styled.div`
@@ -22,19 +23,12 @@ const Panel = styled.div`
   :active {
     transform: scale(1.1);
   }
-
-  img {
-    height: 32px;
-    width: 32px;
-    border-radius: 16px;
-    margin: 0px 10px;
-  }
 `;
 
 const FollowerPanel = ({ username, avatarUrl }) => {
   return (
     <Panel>
-      <img src={avatarUrl} alt="avatar" />
+      <Avatar url={avatarUrl} />
       <span>{username}</span>
     </Panel>
   );
