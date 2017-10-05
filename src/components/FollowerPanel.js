@@ -6,6 +6,7 @@ const Panel = styled.div`
   height: 40px;
   min-width: 15rem;
   background-color: #ffffff;
+  border-radius: 5px;
   box-shadow: 0px 5px 15px -3px rgba(8, 39, 70, 0.14);
   margin: 0px auto 5px auto;
   padding: 5px;

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Search from './Search';
 import Followers from './Followers';
+import UserCard from './UserCard';
 import Api from '../lib/api';
 import AlertMessage from './AlertMessage';
 import Button from './Button';
 import '../styles/App.css';
 
 const initialState = {
-  userId: '',
+  user: {},
   followers: [],
   userFound: true,
   hasMoreFollowers: false,
@@ -34,7 +35,7 @@ class App extends Component {
   searchForUser(username) {
     Api.getUser(username)
       .then(response => {
-        this.setState({ userId: response.data.id });
+        this.setState({ user: response.data });
         this.getFollowersForUser();
       })
       .catch(error => {
@@ -44,7 +45,7 @@ class App extends Component {
   }
 
   getFollowersForUser() {
-    Api.getPageOfFollowers(this.state.userId, this.state.currentPageNumber).then(response => {
+    Api.getPageOfFollowers(this.state.user.id, this.state.currentPageNumber).then(response => {
       this.setState({ followers: response.data });
       this.checkForNextPageOfFollowers(response);
     });
@@ -53,7 +54,7 @@ class App extends Component {
   getNextPageOfFollowers() {
     const currentPageNumber = this.state.currentPageNumber + 1;
 
-    Api.getPageOfFollowers(this.state.userId, currentPageNumber).then(response => {
+    Api.getPageOfFollowers(this.state.user.id, currentPageNumber).then(response => {
       const followers = this.state.followers;
       followers.push(...response.data);
 
@@ -74,9 +75,21 @@ class App extends Component {
     }
   }
 
-  renderAlert() {
-    return !this.state.userFound ? (
-      <AlertMessage status="error" message="User not found. Try a different username." />
+  renderUserCard() {
+    const user = this.state.user;
+    return user.id ? (
+      <UserCard
+        username={user.login}
+        avatarUrl={user.avatar_url}
+        profileUrl={user.html_url}
+        realName={user.name}
+        bio={user.bio}
+        company={user.company}
+        located={user.location}
+        followersCount={user.followers}
+        followingCount={user.following}
+        reposCount={user.public_repos}
+      />
     ) : (
       <div />
     );
@@ -95,9 +108,12 @@ class App extends Component {
       <div className="app">
         <h1>Github User Search</h1>
         <Search searchForUser={this.searchForUser} resetState={this.resetState} />
-        {this.renderAlert()}
-        <Followers followers={this.state.followers} />
-        {this.renderLoadMoreButton()}
+        <div className="info">
+          {this.renderUserCard()}
+          {this.renderAlert()}
+          <Followers followers={this.state.followers} />
+          {this.renderLoadMoreButton()}
+        </div>
       </div>
     );
   }

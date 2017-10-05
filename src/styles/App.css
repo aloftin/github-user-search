@@ -1,6 +1,13 @@
 .app {
   text-align: center;
-  width: 33%;
+  width: 80%;
+  max-width: 800px;
   min-width: 15rem;
+  margin: auto;
+}
+
+.info {
+  min-width: 15rem;
+  max-width: 30rem;
   margin: auto;
 }

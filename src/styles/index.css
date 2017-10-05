@@ -1,8 +1,16 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Lora", serif;
   font-family: "Istok Web", sans-serif;
   color: #082746;
   background-color: #f5f8fa;
+}
+
+a {
+  color: #19bcc9;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

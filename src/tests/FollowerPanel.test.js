@@ -7,7 +7,6 @@ describe('FollowerPanel', () => {
   it("should render the follower's avatar and name", () => {
     const username = 'jseinfeld';
     const url = 'http://jerryseinfeld.com/images/signature.svg';
-
     const wrapper = shallow(<FollowerPanel username={username} avatarUrl={url} />);
 
     expect(
