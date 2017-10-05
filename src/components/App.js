@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Search from './Search';
 import Followers from './Followers';
 import Api from '../lib/api';
+import AlertMessage from './AlertMessage';
 import Button from './Button';
 import '../styles/App.css';
 
@@ -58,6 +59,14 @@ class App extends Component {
     });
   }
 
+  renderAlert() {
+    return !this.state.userFound ? (
+      <AlertMessage status="error" message="User not found. Try a different username." />
+    ) : (
+      <div />
+    );
+  }
+
   renderLoadMoreButton() {
     return this.state.hasMoreFollowers ? (
       <Button content="Load more" onClick={this.getNextPageOfFollowers} />
@@ -71,6 +80,7 @@ class App extends Component {
       <div className="app">
         <h1>Github User Search</h1>
         <Search searchForUser={this.searchForUser} resetState={this.resetState} />
+        {this.renderAlert()}
         <Followers followers={this.state.followers} />
         {this.renderLoadMoreButton()}
       </div>
