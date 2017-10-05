@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import searchIcon from '../images/search.svg';
 
 const Input = styled.input`
-  height: 15px;
+  height: 20px;
   width: 40%;
   min-width: 160px;
   border: solid 1px #d8e3ea;
   color: #7a7a86;
   font-size: 16px;
-  padding: 10px;
+  padding: 7px;
   border-radius: 25px;
   margin: 0px 5px 20px 0px;
   padding-left: 35px;
