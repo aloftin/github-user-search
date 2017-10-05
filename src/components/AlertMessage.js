@@ -20,11 +20,7 @@ const ErrorAlert = Alert.extend`
 `;
 
 const AlertMessage = ({ status, message }) => {
-  return status === 'info' ? (
-    <InfoAlert id="alert">{message}</InfoAlert>
-  ) : (
-    <ErrorAlert id="alert">{message}</ErrorAlert>
-  );
+  return status === 'info' ? <InfoAlert>{message}</InfoAlert> : <ErrorAlert>{message}</ErrorAlert>;
 };
 
 export default AlertMessage;

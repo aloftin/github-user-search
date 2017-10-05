@@ -35,12 +35,10 @@ class App extends Component {
     Api.getUser(username)
       .then(response => {
         this.setState({ userId: response.data.id });
-
         this.getFollowersForUser();
       })
       .catch(error => {
         // TODO: pass error message to renderAlert - i.e. rate limit hit
-
         this.setState({ userFound: false });
       });
   }
@@ -86,7 +84,7 @@ class App extends Component {
 
   renderLoadMoreButton() {
     return this.state.hasMoreFollowers ? (
-      <Button content="Load more" onClick={this.getNextPageOfFollowers} />
+      <Button id="load-more" content="Load more" onClick={this.getNextPageOfFollowers} />
     ) : (
       <div />
     );
