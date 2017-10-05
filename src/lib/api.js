@@ -8,6 +8,6 @@ export default class Api {
   }
 
   static getPageOfFollowers(userId, currentPage) {
-    return axios.get(`/user/${userId}/followers?page=${currentPage + 1}`);
+    return axios.get(`/user/${userId}/followers?page=${currentPage}`);
   }
 }

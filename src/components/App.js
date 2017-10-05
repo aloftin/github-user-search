@@ -11,7 +11,7 @@ const initialState = {
   followers: [],
   userFound: true,
   hasMoreFollowers: false,
-  currentPageNumber: 0,
+  currentPageNumber: 1,
 };
 
 class App extends Component {
@@ -21,8 +21,13 @@ class App extends Component {
     this.state = initialState;
 
     this.searchForUser = this.searchForUser.bind(this);
+    this.getFollowersForUser = this.getFollowersForUser.bind(this);
     this.resetState = this.resetState.bind(this);
     this.getNextPageOfFollowers = this.getNextPageOfFollowers.bind(this);
+  }
+
+  resetState() {
+    this.setState(initialState);
   }
 
   searchForUser(username) {
@@ -30,28 +35,30 @@ class App extends Component {
       .then(response => {
         this.setState({ userId: response.data.id });
 
-        Api.getPageOfFollowers(this.state.userId, this.state.currentPageNumber).then(response => {
-          this.setState({ followers: response.data });
-
-          if (response.headers.link) {
-            const currentPageNumber = this.state.currentPageNumber + 1;
-            this.setState({ hasMoreFollowers: true, currentPageNumber });
-          }
-        });
+        this.getFollowersForUser();
       })
       .catch(error => {
+        // TODO: pass error message to renderAlert - i.e. rate limit hit
+
         this.setState({ userFound: false });
       });
   }
 
-  resetState() {
-    this.setState(initialState);
+  getFollowersForUser() {
+    Api.getPageOfFollowers(this.state.userId, this.state.currentPageNumber).then(response => {
+      console.log(response);
+      this.setState({ followers: response.data });
+
+      if (response.headers.link) {
+        this.setState({ hasMoreFollowers: true });
+      } // else this.setState({ hasMoreFollowers: false });
+    });
   }
 
   getNextPageOfFollowers() {
-    Api.getPageOfFollowers(this.state.userId, this.state.currentPageNumber).then(response => {
-      const currentPageNumber = this.state.currentPageNumber + 1;
+    const currentPageNumber = this.state.currentPageNumber + 1;
 
+    Api.getPageOfFollowers(this.state.userId, currentPageNumber).then(response => {
       const followers = this.state.followers;
       followers.push(...response.data);
 
