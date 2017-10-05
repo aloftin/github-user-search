@@ -24,6 +24,7 @@ class App extends Component {
     this.getFollowersForUser = this.getFollowersForUser.bind(this);
     this.resetState = this.resetState.bind(this);
     this.getNextPageOfFollowers = this.getNextPageOfFollowers.bind(this);
+    this.checkForNextPageOfFollowers = this.checkForNextPageOfFollowers.bind(this);
   }
 
   resetState() {
@@ -46,12 +47,8 @@ class App extends Component {
 
   getFollowersForUser() {
     Api.getPageOfFollowers(this.state.userId, this.state.currentPageNumber).then(response => {
-      console.log(response);
       this.setState({ followers: response.data });
-
-      if (response.headers.link) {
-        this.setState({ hasMoreFollowers: true });
-      } // else this.setState({ hasMoreFollowers: false });
+      this.checkForNextPageOfFollowers(response);
     });
   }
 
@@ -63,7 +60,20 @@ class App extends Component {
       followers.push(...response.data);
 
       this.setState({ followers, currentPageNumber });
+      this.checkForNextPageOfFollowers(response);
     });
+  }
+
+  checkForNextPageOfFollowers(response) {
+    if (response.headers.link) {
+      const hasNextPage = response.headers.link.search('next') !== -1;
+
+      if (hasNextPage) {
+        this.setState({ hasMoreFollowers: true });
+      } else {
+        this.setState({ hasMoreFollowers: false });
+      }
+    }
   }
 
   renderAlert() {
