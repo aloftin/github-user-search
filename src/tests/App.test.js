@@ -37,12 +37,13 @@ describe('App', () => {
     expect(loadMorebutton).toHaveLength(0);
   });
 
-  it('should render an error alert when userFound state is false', () => {
-    const wrapper = mount(<App />);
+  it('should render an info alert when userFound state is false', () => {
+    const wrapper = shallow(<App />);
     wrapper.setState({ userFound: false });
 
     const errorMessage = wrapper.find(AlertMessage);
-    expect(errorMessage.prop('status')).toEqual('error');
+
+    expect(errorMessage.prop('status')).toEqual('info');
     expect(errorMessage.prop('message')).toEqual('User not found. Try a different username.');
   });
 

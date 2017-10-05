@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Search from './Search';
 import Followers from './Followers';
 import UserCard from './UserCard';
-import Api from '../lib/api';
 import AlertMessage from './AlertMessage';
 import Button from './Button';
+import Api from '../lib/api';
 import '../styles/App.css';
 
 const initialState = {
@@ -13,6 +13,7 @@ const initialState = {
   userFound: true,
   hasMoreFollowers: false,
   currentPageNumber: 1,
+  errorMessage: '',
 };
 
 class App extends Component {
@@ -39,8 +40,14 @@ class App extends Component {
         this.getFollowersForUser();
       })
       .catch(error => {
-        // TODO: pass error message to renderAlert - i.e. rate limit hit
-        this.setState({ userFound: false });
+        debugger;
+        if (error.response.status === 403) {
+          this.setState({
+            errorMessage: 'API rate limit exceed. Wait a bit then try again.',
+          });
+        } else {
+          this.setState({ userFound: false });
+        }
       });
   }
 
@@ -93,6 +100,16 @@ class App extends Component {
     ) : (
       <div />
     );
+  }
+
+  renderAlert() {
+    if (this.state.errorMessage || !this.state.userFound) {
+      return !this.state.userFound ? (
+        <AlertMessage status="info" message="User not found. Try a different username." />
+      ) : (
+        <AlertMessage status="error" message={this.state.errorMessage} />
+      );
+    }
   }
 
   renderLoadMoreButton() {

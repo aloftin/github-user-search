@@ -5,6 +5,7 @@ const Alert = styled.div`
   padding: 0.6em 0.8em;
   margin: auto;
   text-align: left;
+  width: 71%;
 `;
 
 const InfoAlert = Alert.extend`
