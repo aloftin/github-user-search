@@ -1,6 +1,8 @@
 ## Description
 This application allows anyone to search for a Github username, view some information about said user, and view a list of that user's followers. Github limits the number of follower returned in each calls, so there is a button that will load the next page of followers until no more remain.
 
+I've been working on this project for about 6 nights while working full time and keeping up with my 15 month old daughter and pregnant (yay!) wife. I think it landed in a pretty good spot, though there's more add like to add. Hope you like it!
+
 ## Getting started
 After you clone the repo, follow the steps below to get the project running on your machine.
 
@@ -29,7 +31,7 @@ If you have questions, please feel free to contact me. My information and a link
 - [Yarn](https://yarnpkg.com/en/): I chose to use Yarn because I prefer it over npm. I like how fast it is, how it can work offline, how it uses a single lock file for determinism, and how its commands are concise.
 
 ### Testing
-I'm still fairly new to testing and test frameworks in JavaScript. I chose the tools listed below because they are widely used and have good documentation. There could definitely be better test coverage in this project, but I tried to provide some examples of different tests since my time is limited.
+I'm still fairly new to testing and test frameworks in JavaScript. I chose the tools listed below because they are widely used and have good documentation. There could definitely be better test coverage in this project. Not every component has tests, but I tried to provide some different examples of tests since my time is limited.
 
 - [Jest](https://facebook.github.io/jest/): Jest comes with Create React App out of the box. I'm not using it for snapshot testing because I'm still learning about it, but I used it to make assertions. The assertion syntax is similar to that of Mocha, just with less dots.
 - [Enzyme](https://github.com/airbnb/enzyme/): I chose Enzyme because it provides a nice way to shallow render or mount components for testing. It is very full featured, and it has lots of documentation. It works well with Jest and many other testing frameworks.
