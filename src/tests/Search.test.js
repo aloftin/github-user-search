@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, find, to, have, length } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import { stub } from 'sinon';
 import Search from '../components/Search';
 import SearchInput from '../components/SearchInput';
 import Button from '../components/Button';
