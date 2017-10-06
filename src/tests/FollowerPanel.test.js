@@ -10,7 +10,10 @@ describe('FollowerPanel', () => {
     const wrapper = shallow(<FollowerPanel username={username} avatarUrl={url} />);
 
     expect(
-      wrapper.containsAllMatchingElements([<Avatar url={url} />, <span>{username}</span>]),
+      wrapper.containsAllMatchingElements([
+        <Avatar url={url} />,
+        <div className="username">{username}</div>,
+      ]),
     ).toBe(true);
   });
 });
