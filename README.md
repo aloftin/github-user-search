@@ -1,7 +1,7 @@
 ## Description
 This application allows anyone to search for a Github username, view some information about said user, and view a list of that user's followers. Github limits the number of follower returned in each calls, so there is a button that will load the next page of followers until no more remain.
 
-I've been working on this project for about 6 nights while working full time and keeping up with my 15 month old daughter and pregnant (yay!) wife. I think it landed in a pretty good spot, though there's more add like to add. Hope you like it!
+Given the time constraint, I think this project landed in a pretty good spot, though there's more I'd like to add. Hope you like it!
 
 ## Getting started
 After you clone the repo, follow the steps below to get the project running on your machine.
